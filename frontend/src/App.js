@@ -26,11 +26,12 @@ const [movies, setMovies] = useState([]);
 
   return (
     <div className="App">
-      test
-      
-          <ul className="categories">
+      <div className="categories">
+        <label htmlFor="categories">choose a category:</label>
+        <select name="category" id="category">
             <Category movies={movies}/>
-          </ul>
+        </select>
+      </div>
  
       {movies.map(item => 
       {

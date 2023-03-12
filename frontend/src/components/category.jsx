@@ -1,5 +1,3 @@
-// import {useEffect, useState } from "react";
-
 function Category({ movies }) {
     const categories = [];
     movies.forEach(movie => {
@@ -9,12 +7,11 @@ function Category({ movies }) {
     });
   
     return (
-      <div>
-        <h2>Categories:</h2>
-          {categories.map((category, index) => (
-            <li key={index}>{category}</li>
+         <>
+                         {categories.map((category, index) => (
+            <option key={index}>{category}</option>
           ))}
-      </div>
+         </>
     );
   }
   
