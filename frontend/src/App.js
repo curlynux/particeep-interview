@@ -3,8 +3,9 @@ import { movies$ } from './data/movies';
 import {useEffect, useState} from "react"
 import AllMovie from './components/AllMovie';
 import {useSelector, useDispatch} from "react-redux";
-import { setRemove, setLike, setDisLike } from "./redux/allMovies";
+import { setRemove, setCategory, setLike, setDisLike } from "./redux/allMovies";
 import Category from "./components/category";
+
 
 function App() {
 const dispatch = useDispatch();
@@ -24,12 +25,19 @@ const [movies, setMovies] = useState([]);
   });
 }, [])
 
+function handleChange(event)
+    {
+        setCategory(event.target.value);
+        console.log("changed !");
+        console.log(event.target.value);
+    }
+
   return (
     <div className="App">
       <div className="categories">
         <label htmlFor="categories">choose a category:</label>
-        <select name="category" id="category">
-            <Category movies={movies}/>
+        <select name="category" id="category" onChange={handleChange}>
+            <Category movies={movies} />
         </select>
       </div>
  
