@@ -1,10 +1,8 @@
 // function to render all movie
-import { useSelector } from 'react-redux';
 import DeleteButton from './deleteButton';
 
-function AllMovie({id, title, category, movies, setMovies}) {
-    const like = useSelector((state) => state.movie.like);
-    const dislike = useSelector((state) => state.movie.dislike);
+function AllMovie({id, title, category, like, dislike, movies, setMovies}) {
+
     return (
       <div className='movie'>
         <div id={id}>

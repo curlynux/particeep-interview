@@ -4,27 +4,34 @@ import {useEffect, useState} from "react"
 import AllMovie from './components/AllMovie';
 import {useSelector, useDispatch} from "react-redux";
 import { setRemove, setLike, setDisLike } from "./redux/allMovies";
+import Category from "./components/category";
 
 function App() {
 const dispatch = useDispatch();
 const [movies, setMovies] = useState([]);
+
   useEffect(() => 
 {
-  movies$.then(data => 
+  movies$.then(movie => 
   {
-    setMovies(data)
+    setMovies(movie)
+  })
+  movies.map(item => 
+  {
 
-    // data.map(item => 
-    // {
-    //   dispatch(setLike(item.like))
-    //   dispatch(setDisLike(item.dislike))
-    // });
+    dispatch(setLike(item.likes))
+    dispatch(setDisLike(item.dislikes))
   });
 }, [])
 
   return (
     <div className="App">
       test
+      
+          <ul className="categories">
+            <Category movies={movies}/>
+          </ul>
+ 
       {movies.map(item => 
       {
         return <AllMovie 
@@ -38,6 +45,7 @@ const [movies, setMovies] = useState([]);
         setMovies={setMovies}
         />
       })}
+
     </div>
   );
 }

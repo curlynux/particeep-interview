@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     remove: false,
-    likes: 0,
-    dislikes: 0
+    like: 0,
+    dislike: 0,
 }
 const moviesSlice = createSlice({
     name: "movie",
@@ -11,9 +11,9 @@ const moviesSlice = createSlice({
     reducers: {
         setRemove: (state, action) => {state.remove = action.payload},
         setLike: (state, action) => {state.like = action.payload},
-        setDisLike: (state, action) => {state.dislikes = action.payload}
+        setDisLike: (state, action) => {state.dislike = action.payload}
     }
 });
 
-export const {setId, setTitle, setCategory, setLike, setDisLike} = moviesSlice.actions;
+export const {setLike, setDisLike} = moviesSlice.actions;
 export default moviesSlice;
