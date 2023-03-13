@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-
 function Category({ categories }) {
     const _categories = [];
     
@@ -10,6 +7,8 @@ function Category({ categories }) {
       }
     });
     
+    _categories.unshift("tous")
+    console.log(_categories);
     return (
          <>
             {_categories.map((category, index) => (

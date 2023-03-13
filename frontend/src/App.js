@@ -1,34 +1,38 @@
-import './App.css';
+import './assets/smartphone/main.css';
+import "./App.css"
 import { movies$ } from './data/movies';
 import {useEffect, useState} from "react"
 import AllMovie from './components/AllMovie';
 import {useSelector, useDispatch} from "react-redux";
-import { setRemove, setCategory, setLike, setDisLike } from "./redux/allMovies";
+import { setRemove, setNewCategory, setElementsPerPage, setMovies, setLike, setDisLike } from "./redux/allMovies";
 import Category from "./components/category";
+import Pagination from "./components/Pagination"
 
 
 function App() {
 const dispatch = useDispatch();
-const [movies, setMovies] = useState([]);
+const movies = useSelector((state) => state.movie.movies)
 const [moviesBackup, setMoviesBackup] = useState([]);
 const [categories, setCategories] = useState([]);
-const selection = useSelector((state) => state.movie.category)
+const selection = useSelector((state) => state.movie.category);
+const elementsPerPage = useSelector((state) => state.movie.elementsPerPage);
 
 useEffect(()=> {
   if (!selection)
     return ;
-  setMovies(moviesBackup.filter(movie=>movie.category === selection));
+  dispatch(setMovies(moviesBackup.filter(movie=>movie.category === selection)));
 }, [selection]);
 
 useEffect(() => 
 {
   movies$.then(movie => 
   {
-    setMovies(movie);
+
+    dispatch(setMovies(movie));
     setMoviesBackup(movie);
-    movie.forEach(movie=> {
-      categories.push(movie.category);
-      setCategories(categories);
+    movie.forEach(item=> {
+      categories.push(item.category);
+      dispatch(setNewCategory(selection));
     });
   })
   movies.map(item => 
@@ -38,25 +42,37 @@ useEffect(() =>
   });
 }, [])
 
-function handleChange(event)
+// useEffect(() => 
+// {
+  
+//   dispatch(setMovies(movies.slice(0, elementsPerPage)))
+// }, [elementsPerPage, movies])
+
+function handleCategoryChange(event)
     {
-        dispatch(setCategory(event.target.value));
-        // setCategory(event.target.value);
+        dispatch(setNewCategory(event.target.value));
         console.log("changed !");
         console.log(event.target.value);
-
+        if (event.target.value === "tous") {
+          dispatch(setMovies(movies));
+        } else {
+          const filteredMovies = movies.filter(movie => movie.category === event.target.value);
+          console.log(filteredMovies);
+          dispatch(setMovies(filteredMovies));
+        }
+          
     }
-
   return (
     <div className="App">
       <div className="categories">
         <label htmlFor="categories">choose a category:</label>
-        <select name="category" id="category" onChange={handleChange}>
+        <select name="category" id="category" onChange={handleCategoryChange}>
             <Category categories={categories}/>
         </select>
       </div>
  
-      {movies.map(item => 
+      <div className='wrapper'>
+      {movies.slice(elementsPerPage - 4, elementsPerPage).map(item => 
       {
         return <AllMovie 
         key={item.id}
@@ -70,7 +86,8 @@ function handleChange(event)
         
         />
       })}
-
+      </div>
+    <Pagination movies={movies} setMovies={setMovies} />
     </div>
   );
 }
