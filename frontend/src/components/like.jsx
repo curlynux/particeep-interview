@@ -11,14 +11,15 @@ function Like({id, like, movies, setMovies})
     useEffect(() => {dispatch(setLike(like))}, []);
     function handleLike()
     {
-        movies.map(item => 
+        movies.map(movie => 
         {
-            if(item.id === id)
+            if(movie.id === id)
             {
-                console.log(item.id - 1, parseInt(id) -1);
-                dispatch(setLike(like))
-                console.log("DERNIER",_like, "PREMIER",like);
-                // dispatch(setLike())
+                console.log(movie.id - 1, parseInt(id) -1);
+                dispatch(setLike(300))
+                console.log(movies[id].likes = 111111);
+                // setMovies(movies[id].)
+                console.log("_like",_like, "like",like);
             }
         });
     }
