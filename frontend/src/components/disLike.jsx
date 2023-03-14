@@ -6,9 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
 function DisLike({id, dislike})
 {
-    // console.log(id);
     const _dislike = useSelector((state) => state.movie.dislike);
-    // const movies = useSelector((state) => state.movie.movies);
     const dispatch = useDispatch();
 
     function handleChange()
@@ -17,9 +15,6 @@ function DisLike({id, dislike})
         console.log("LIKE UPDATED !", _dislike);
     }
     useEffect(() => {dispatch(setDisLike(dislike))}, []);
-    
-
-    
 
     return (
         <>

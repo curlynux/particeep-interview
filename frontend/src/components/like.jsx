@@ -18,7 +18,6 @@ function Like({id, like, movies, setMovies})
                 console.log(movie.id - 1, parseInt(id) -1);
                 dispatch(setLike(300))
                 console.log(movies[id].likes = 111111);
-                // setMovies(movies[id].)
                 console.log("_like",_like, "like",like);
             }
         });

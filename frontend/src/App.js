@@ -49,13 +49,6 @@ useEffect(() =>
   });
 }, [])
 
-
-// useEffect(() => 
-// {
-  
-//   dispatch(setMovies(movies.slice(0, elementsPerPage)))
-// }, [elementsPerPage, movies])
-
 function handleCategoryChange(event)
     {
         dispatch(setNewCategory(event.target.value));
@@ -70,16 +63,7 @@ function handleCategoryChange(event)
         }
           
     }
-  // function handleLikeChange()
-  // {
-  //   dispatch(setLike(_like++))
-  //   console.log("LIKEED !");
-  // }
-  // function handleDisLikeChange()
-  // {
-  //   dispatch(setLike(_disLike--))
-  //   console.log("DISLIKEED !");
-  // }
+  // 
   return (
     <div className="App">
       <div className="categories">
