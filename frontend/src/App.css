@@ -206,4 +206,11 @@ and (min-width: 992px)
         display: flex;
         width: 100%;
     }
+    .deleteBtn {
+        background-color: #DF2E38;
+        width: 2em;
+        height: 2em;
+        border-radius: 50%;
+        transform: translate(-0.5em, -0.5em);
+    }    
 }

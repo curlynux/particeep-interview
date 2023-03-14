@@ -1,6 +1,8 @@
 // function to render all movie
+import { useSelector } from 'react-redux';
 import DeleteButton from './deleteButton';
-
+import Like from './like';
+import DisLike from './disLike';
 // function fetchMoviePoster(title, apiKey) {
 //   // Construct the search query using the movie title
 //   const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${title}`;
@@ -39,22 +41,21 @@ import DeleteButton from './deleteButton';
 // const posterUrl = fetchMoviePoster("The Shawshank Redemption", "your_api_key_here");
 // console.log(posterUrl);
 
-function AllMovie({id, title, category, like, dislike, movies, setMovies}) {
+function AllMovie({id, title, category, like, dislike, movies, setMovies, edit}) {
 
-  
+  // const like = useSelector((state) => state.movie.like);
 
     return (
       <div className='movie'>
         <div id={id} className="id">
+        {edit && <DeleteButton key={id} id={id} movies={movies} setMovies={setMovies}/>}
           <div className='stuff'>
-            <span>{like}</span>
-            <span>{dislike}</span>
+            <Like like={like} movies={movies} />
+            <DisLike dislike={dislike} movies={movies} />
             <div className='info'>
                 <h3>{title}</h3>
                 <p>{category}</p>
             </div>
-        <DeleteButton key={id} id={id} movies={movies} setMovies={setMovies}/>
-
           </div>
         </div>
       </div>

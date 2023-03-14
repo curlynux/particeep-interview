@@ -1,12 +1,14 @@
+import { useDispatch } from "react-redux";
+
 function DeleteButton({id, movies, setMovies})
 {
-    
+    const dispatch = useDispatch();
     function handleClick() {
-        setMovies(movies.filter(movie => movie.id !== id));
+        dispatch(setMovies(movies.filter(movie => movie.id !== id)));
     }
 
     return(
-        <button onClick={handleClick}>supprimer</button>
+        <button className="deleteBtn" onClick={handleClick}>X</button>
     )
 }
 

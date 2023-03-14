@@ -7,7 +7,11 @@ import {useSelector, useDispatch} from "react-redux";
 import { setRemove, setNewCategory, setElementsPerPage, setMovies, setLike, setDisLike } from "./redux/allMovies";
 import Category from "./components/category";
 import Pagination from "./components/Pagination"
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {fab, fas} from "@fortawesome/free-brands-svg-icons"
+import { faCheckSquare, faCoffee, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
+library.add(fab, faCheckSquare, faCoffee, faThumbsUp, faThumbsDown)
 
 function App() {
 const dispatch = useDispatch();
@@ -16,7 +20,7 @@ const [moviesBackup, setMoviesBackup] = useState([]);
 const [categories, setCategories] = useState([]);
 const selection = useSelector((state) => state.movie.category);
 const elementsPerPage = useSelector((state) => state.movie.elementsPerPage);
-
+const [edit, setEdit] = useState(false);
 useEffect(()=> {
   if (!selection)
     return ;
@@ -69,8 +73,12 @@ function handleCategoryChange(event)
         <select name="category" id="category" onChange={handleCategoryChange}>
             <Category categories={categories}/>
         </select>
+        <button style={{
+          backgroundColor: edit ? "red" :  "green",
+        }}
+        onClick={() => setEdit(edit ? false : true)}>editer</button>
       </div>
- 
+
       <div className='wrapper'>
       {movies.slice(elementsPerPage - 4, elementsPerPage).map(item => 
       {
@@ -83,6 +91,7 @@ function handleCategoryChange(event)
         dislike={item.dislikes}
         movies={movies}
         setMovies={setMovies}
+        edit={edit}
         
         />
       })}
