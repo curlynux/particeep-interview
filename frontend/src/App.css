@@ -1,8 +1,7 @@
 
 
 @media only screen 
-    and (max-width : 768px) 
-    and (-webkit-device-pixel-ratio : 1) 
+    and (max-width : 992px) 
     {
         .wrapper {
             display: flex;
@@ -10,6 +9,9 @@
             height: 100vh; */
             flex-wrap: wrap;
             justify-content: center;
+
+            width: 95%;
+            
             
         }
         body {
@@ -27,11 +29,12 @@
     
         .movie {
             display: flex;
-            margin: 1em;
+            margin: 2em;
+            
             border-radius: 2em;
             justify-content: space-between;
-            width: 300px;
-            height: 32em;
+            width: 200px;
+            height: 22em;
             background-color: #FFF8D1;
             transform: scale(1);
             transition: 0.1s;
@@ -98,6 +101,7 @@
             /* width: 200px; */
             height: 400px;
             object-fit: cover;
+            border-radius: 2em;
         }
 
     }
@@ -113,7 +117,7 @@
             height: 100vh; */
             flex-wrap: wrap;
             justify-content: space-between;
-            width: 90%;
+            width: 100%;
             
         }
         body {
