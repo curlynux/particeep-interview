@@ -23,8 +23,11 @@ function DisLike({id, dislike})
 
     return (
         <>
-            <FontAwesomeIcon icon="fa-solid fa-thumbs-down" onClick={handleChange} />
-            <span>{dislike}</span>
+            
+            <span>
+                <FontAwesomeIcon icon="fa-solid fa-thumbs-down" onClick={handleChange} />
+                dislike:{dislike} 
+            </span>
         </>
     )
 }

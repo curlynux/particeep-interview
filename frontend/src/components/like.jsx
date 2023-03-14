@@ -28,8 +28,11 @@ function Like({id, like, movies, setMovies})
 
     return (
         <>
+            
+            <span onChange={handleLike}> 
             <FontAwesomeIcon icon="fa-solid fa-thumbs-up" onClick={handleLike} />
-            <span onChange={handleLike}>{like}</span>
+            like: {like}
+            </span>
         </>
     )
 }
