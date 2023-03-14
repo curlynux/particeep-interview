@@ -78,7 +78,7 @@ function handleCategoryChange(event)
       </div>
 
       <div className='wrapper'>
-      {movies.slice(elementsPerPage - 4, elementsPerPage).map(item => 
+      {movies.slice(0, elementsPerPage).map(item => 
       {
         return <AllMovie 
         key={item.id}

@@ -215,7 +215,8 @@ and (min-width: 992px)
         /* width: 100vw;
         height: 100vh; */
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between;
+        width: 90%;
         
     }
     body {
@@ -233,7 +234,7 @@ and (min-width: 992px)
 
     .movie {
         display: flex;
-        margin: 3em;
+        /* margin: 3em; */
         border-radius: 2em;
         justify-content: space-between;
         width: 300px;
