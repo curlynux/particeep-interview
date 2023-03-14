@@ -21,6 +21,9 @@ const [categories, setCategories] = useState([]);
 const selection = useSelector((state) => state.movie.category);
 const elementsPerPage = useSelector((state) => state.movie.elementsPerPage);
 const [edit, setEdit] = useState(false);
+const _like = useSelector((state) => state.movie.like);
+const _disLike = useSelector((state) => state.movie.like)
+
 useEffect(()=> {
   if (!selection)
     return ;
@@ -46,6 +49,7 @@ useEffect(() =>
   });
 }, [])
 
+
 // useEffect(() => 
 // {
   
@@ -66,6 +70,16 @@ function handleCategoryChange(event)
         }
           
     }
+  // function handleLikeChange()
+  // {
+  //   dispatch(setLike(_like++))
+  //   console.log("LIKEED !");
+  // }
+  // function handleDisLikeChange()
+  // {
+  //   dispatch(setLike(_disLike--))
+  //   console.log("DISLIKEED !");
+  // }
   return (
     <div className="App">
       <div className="categories">

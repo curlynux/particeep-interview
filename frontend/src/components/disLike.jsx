@@ -4,24 +4,26 @@ import { setDisLike } from "../redux/allMovies";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
 
-function DisLike({movies, dislike})
+function DisLike({id, dislike})
 {
+    // console.log(id);
     const _dislike = useSelector((state) => state.movie.dislike);
     // const movies = useSelector((state) => state.movie.movies);
     const dispatch = useDispatch();
-    useEffect(() => 
+
+    function handleChange()
     {
-        console.log(movies);
-        movies.map(item => 
-        {
-            console.log("TEST MOVIE", item);
-            // dispatch(setDisLike(item.dislikes));
-        });
-    }, [])
+        dispatch(setDisLike(_dislike--))
+        console.log("LIKE UPDATED !", _dislike);
+    }
+    useEffect(() => {dispatch(setDisLike(dislike))}, []);
+    
+
+    
 
     return (
         <>
-            <FontAwesomeIcon icon="fa-solid fa-thumbs-down" />
+            <FontAwesomeIcon icon="fa-solid fa-thumbs-down" onClick={handleChange} />
             <span>{dislike}</span>
         </>
     )

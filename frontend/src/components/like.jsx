@@ -1,33 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLike } from "../redux/allMovies";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
-function Like({movies, like})
+function Like({id, like, movies, setMovies})
 {
     const dispatch = useDispatch();
-    const _like = useSelector((state) => state.movie.like);
-    function handleChange()
+    var _like = useSelector((state) => state.movie.like);
+    useEffect(() => {dispatch(setLike(_like))}, [_like])
+    useEffect(() => {dispatch(setLike(like))}, []);
+    function handleLike()
     {
-        dispatch(setLike(_like))
-        console.log("LIKE UPDATED !");
-    }
-
-    // const movies = useSelector((state) => state.movie.movies);
-    useEffect(() => 
-    {
-        console.log(movies);
         movies.map(item => 
         {
-            // console.log("TEST MOVIE", item);
-            // dispatch(setDisLike(item.dislikes));
+            if(item.id === id)
+            {
+                console.log(item.id - 1, parseInt(id) -1);
+                dispatch(setLike(like))
+                console.log("DERNIER",_like, "PREMIER",like);
+                // dispatch(setLike())
+            }
         });
-    }, [])
+    }
+
+    
 
     return (
         <>
-        <FontAwesomeIcon icon="fa-solid fa-thumbs-up" />
-        <span onChange={handleChange}>{like}</span>
+            <FontAwesomeIcon icon="fa-solid fa-thumbs-up" onClick={handleLike} />
+            <span onChange={handleLike}>{like}</span>
         </>
     )
 }

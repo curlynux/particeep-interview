@@ -8,7 +8,7 @@ function Category({ categories }) {
     });
     
     _categories.unshift("tous")
-    console.log(_categories);
+    // console.log(_categories);
     return (
          <>
             {_categories.map((category, index) => (

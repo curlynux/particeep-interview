@@ -4,6 +4,7 @@ const initialState = {
     remove: false,
     newCategory: "",
     movies: [],
+    localMovie: [],
     page: 1,
     elementsPerPage: 4,
     like: 0,
@@ -16,6 +17,7 @@ const moviesSlice = createSlice({
         setRemove: (state, action) => {state.remove = action.payload},
         setNewCategory: (state, action) => {state.category = action.payload},
         setMovies: (state, action) => {state.movies =action.payload},
+        setLocalMovie: (state, action) => {state.localMovie = action.payload},
         setPage: (state, action) => {state.page = action.payload},
         setElementsPerPage: (state, action) => {state.elementsPerPage = action.payload},
         setLike: (state, action) => {state.like = action.payload},
@@ -23,5 +25,5 @@ const moviesSlice = createSlice({
     }
 });
 
-export const {setRemove, setNewCategory, setElementsPerPage, setMovies, setPage, setLike, setDisLike} = moviesSlice.actions;
+export const {setRemove, setNewCategory, setElementsPerPage, setMovies, setLocalMovie, setPage, setLike, setDisLike} = moviesSlice.actions;
 export default moviesSlice;
