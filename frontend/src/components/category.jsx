@@ -1,3 +1,6 @@
+import {memo} from "react";
+
+
 function Category({ categories }) {
     const _categories = [];
     
